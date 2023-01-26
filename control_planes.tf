@@ -35,7 +35,8 @@ module "control_planes" {
   automatically_upgrade_os = var.automatically_upgrade_os
 
   depends_on = [
-    hcloud_network_subnet.control_plane
+    hcloud_network_subnet.control_plane,
+    module.proxy
   ]
 }
 

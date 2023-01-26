@@ -14,7 +14,7 @@ locals {
 
   additional_k3s_environment = join("\n",
     [
-      for var_name, var_value in var.additional_k3s_environment :
+      for var_name, var_value in merge(local.proxy_env, var.additional_k3s_environment) :
       "${var_name}=\"${var_value}\""
     ]
   )
@@ -39,6 +39,7 @@ locals {
     ],
     # User-defined commands to execute just before installing k3s.
     var.preinstall_exec,
+    local.proxy_preinstall_exec,
   )
 
 
