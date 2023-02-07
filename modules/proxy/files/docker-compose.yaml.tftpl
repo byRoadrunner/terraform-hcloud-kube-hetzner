@@ -13,7 +13,7 @@ services:
       ENABLE_MANIFEST_CACHE: true
       # dev images: short cache ttl
       MANIFEST_CACHE_PRIMARY_REGEX: "(stable|nightly|production|test)"
-      MANIFEST_CACHE_PRIMARY_TIME: "10m"
+      MANIFEST_CACHE_PRIMARY_TIME: "2m"
       # 'Secondary' tier defaults any tag that has 3 digits or dots, in the hopes of matching most explicitly-versioned tags.
       # It caches for 60d, which is also the cache time for the large binary blobs to which the manifests refer.
       # That makes them effectively immutable. Make sure you're not affected; tighten this regex or widen the primary tier.
