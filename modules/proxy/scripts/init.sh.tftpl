@@ -2,6 +2,8 @@
 
 set -e
 
+# Ha!
+cloud-init status --wait
 
 mkdir -p /var/container-proxy/cache
 mkdir -p /var/container-proxy/ca
@@ -16,5 +18,8 @@ systemctl start docker
 docker compose build --progress quiet
 
 docker compose up --detach
+
+timeout 30s /bin/sh -c 'while ! curl --connect-timeout 5 localhost:3128; do sleep 1; done'
+timeout 30s /bin/sh -c 'while ! curl --connect-timeout 5 ${private_ipv4}:3128; do sleep 1; done'
 
 date | tee /root/proxy-init-finished.txt

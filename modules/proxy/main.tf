@@ -9,6 +9,7 @@ locals {
     "${path.module}/scripts/init.sh.tftpl",
     {
       "opensuse_microos_mirror_link" : var.opensuse_microos_mirror_link,
+      "private_ipv4" : var.private_ipv4,
     }
   )
 
@@ -132,11 +133,11 @@ resource "null_resource" "init_proxy" {
     ]
   }
 
-  provisioner "remote-exec" {
-    when = destroy
-    inline = [
-      "cd /var/proxy-runtime && docker compose down"
-    ]
-  }
+  # provisioner "remote-exec" {
+  #   when = destroy
+  #   inline = [
+  #     "cd /var/proxy-runtime && docker compose down"
+  #   ]
+  # }
 
 }
