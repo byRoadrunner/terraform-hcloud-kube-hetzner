@@ -19,7 +19,7 @@ output "env_vars" {
 
 output "preinstall_exec" {
   value = [
-    "timeout 120s /bin/sh -c 'until curl http://${var.private_ipv4}:3128; do sleep 1; done'",
+    "timeout 300s /bin/sh -c 'until curl http://${var.private_ipv4}:3128; do sleep 1; done'",
     "curl http://${var.private_ipv4}:3128/ca.crt > /root/ca.crt",
     "trust anchor --store /root/ca.crt",
   ]
