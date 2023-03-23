@@ -470,6 +470,7 @@ and to create a new storage class
 
 <summary>Encryption at rest with Longhorn</summary>
 To get started, use a cluster-wide key for all volumes like this,
+ 
 ```yaml
 apiVersion: v1
 kind: Secret
